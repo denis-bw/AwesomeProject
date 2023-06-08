@@ -31,8 +31,10 @@ export function LoginScreen() {
                         style={[styles.textInput, isFocusedPassword && { borderColor: "#FF6C00" }]} 
                         placeholder="Пароль" />
               
-                    <TouchableOpacity style={styles.button}  onPress={showPassword}>
-                        <Text style={styles.showPassword}>Показати</Text>
+                  <TouchableOpacity style={styles.buttonShowPassword} onPress={showPassword}>
+                      <View style={styles.containerButtonShowPassword}>
+                        <Text style={styles.showPassword} onPress={showPassword} >Показати</Text>
+                     </View> 
                     </TouchableOpacity>      
                 </View>
             <TouchableOpacity>
@@ -123,9 +125,9 @@ const styles = StyleSheet.create({
     },
     
     showPassword: {
-        position: "absolute",
-        top: -50,
-        left: 255,
+        // position: "absolute",
+        // top: -50,
+        // left: 255,
         fontFamily: 'Roboto',
         fontStyle: "normal",
         fontWeight: 400,
@@ -133,5 +135,15 @@ const styles = StyleSheet.create({
         lineHeight: 19,
         textAlign: "center",
         color: "#1B4371",
+    },
+    containerButtonShowPassword: {
+        position: "absolute",
+        top: -65,
+        left: 255,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 50,
+        width: 90,
     }
 });

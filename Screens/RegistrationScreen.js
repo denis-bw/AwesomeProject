@@ -41,8 +41,8 @@ export function RegistrationScreen() {
                             style={[styles.textInput, isFocusedPassword && { borderColor: "#FF6C00" }]}
                         placeholder="Пароль" />
                     
-                        <TouchableOpacity style={styles.button}  onPress={showPassword}>
-                            <Text style={styles.showPassword}>Показати</Text>
+                        <TouchableOpacity style={styles.button} onPress={showPassword}>
+                            <Text style={styles.showPassword} onPress={showPassword}>Показати</Text>
                         </TouchableOpacity> 
                     </View>
                     <TouchableOpacity>
