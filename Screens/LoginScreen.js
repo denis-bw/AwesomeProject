@@ -19,6 +19,7 @@ export function LoginScreen() {
                         style={[styles.textInput, isFocusedAddres && { borderColor: "#FF6C00" }]} 
                         placeholder="Пароль"  />
                     <TextInput
+                        secureTextEntry={true}
                         onBlur={() => setIsFocusedPassword(false)}
                         onFocus={() => setIsFocusedPassword(true)}
                         style={[styles.textInput, isFocusedPassword && { borderColor: "#FF6C00" }]} 
