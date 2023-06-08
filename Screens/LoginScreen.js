@@ -1,13 +1,18 @@
-import { StyleSheet, View,  Text, TextInput,  TouchableHighlight } from 'react-native';
+import { StyleSheet, View,  Text, TextInput, TouchableOpacity,  ImageBackground } from 'react-native';
 import { useState } from 'react';
+import img from '../img/BG.png'
 
 export function LoginScreen() {
 
     
     const [isFocusedAddres, setIsFocusedAddres] = useState(false);
     const [isFocusedPassword, setIsFocusedPassword] = useState(false);
+    const [secureTextEntry, setSecureTextEntry] = useState(true)
     
-  return (
+    const showPassword = () => setSecureTextEntry(prevState => !prevState)
+   
+  return (<View style={styles.containerPostsScreen}>
+          <ImageBackground source={img} style={styles.imageBackground}>
         <View style={styles.constainerRegistration}>
             
                 <Text style={styles.textRegistration} >Увійти</Text>
@@ -17,29 +22,46 @@ export function LoginScreen() {
                         onBlur={() => setIsFocusedAddres(false)}
                         onFocus={() => setIsFocusedAddres(true)}
                         style={[styles.textInput, isFocusedAddres && { borderColor: "#FF6C00" }]} 
-                        placeholder="Пароль"  />
-                    <TextInput
-                        secureTextEntry={true}
+                        placeholder="Адреса електронної пошти"  />
+                  <TextInput
+                       autoComplete='off'
+                        secureTextEntry={secureTextEntry}
                         onBlur={() => setIsFocusedPassword(false)}
                         onFocus={() => setIsFocusedPassword(true)}
                         style={[styles.textInput, isFocusedPassword && { borderColor: "#FF6C00" }]} 
-                        placeholder="Адреса електронної пошти" />
-                    <Text style={styles.showPassword}>Показати</Text>
+                        placeholder="Пароль" />
+              
+                    <TouchableOpacity style={styles.button}  onPress={showPassword}>
+                        <Text style={styles.showPassword}>Показати</Text>
+                    </TouchableOpacity>      
                 </View>
-            <TouchableHighlight>
+            <TouchableOpacity>
                 <View style={styles.containerButton}>
                     <Text style={styles.ButtonText}>Увійти</Text>
                 </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
             <Text style={styles.LinkTextLogin}>Немає акаунту? Зареєструватися</Text>
-        </View>
+          </View>
+          </ ImageBackground>
+    </View>
   );
 }
 
 
 const styles = StyleSheet.create({
+     containerPostsScreen: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    imageBackground: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        resizeMode: 'cover',
+        width: "auto",
+        height: "auto",
+    },
     constainerRegistration: {
-        flex: 0.5,
+        flex: 0.6,
         backgroundColor: '#fff',
         width: "100%",
         alignItems: 'center',
@@ -59,7 +81,7 @@ const styles = StyleSheet.create({
     containerInput: {
         display: 'flex',
         gap: 16,
-        marginBottom: 42,
+        marginBottom: 30,
     },
     textRegistration: {
         marginTop: 32,
@@ -102,7 +124,7 @@ const styles = StyleSheet.create({
     
     showPassword: {
         position: "absolute",
-        top: 80,
+        top: -50,
         left: 255,
         fontFamily: 'Roboto',
         fontStyle: "normal",

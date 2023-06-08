@@ -1,54 +1,77 @@
-import { StyleSheet, View,  Text, TextInput,  TouchableHighlight } from 'react-native';
+import { StyleSheet, View,  Text, TextInput,  TouchableOpacity, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; 
 import { useState } from 'react';
+import img from '../img/BG.png'
 
 export function RegistrationScreen() {
 
     const [isFocusedLogin, setIsFocusedLogin] = useState(false);
     const [isFocusedAddres, setIsFocusedAddres] = useState(false);
     const [isFocusedPassword, setIsFocusedPassword] = useState(false);
+     const [secureTextEntry, setSecureTextEntry] = useState(true)
     
-  return (
-        <View style={styles.constainerRegistration}>
-            <View style={styles.containerAvatar} >
-                <Ionicons name="ios-add-circle-outline" size={25} color="#FF6C00" style={styles.iconAddAvatar } />
-            </View>
-                <Text style={styles.textRegistration} >Реєстрація</Text>
-                <View style={styles.containerInput} >
-                <TextInput
-                    onBlur={() => setIsFocusedLogin(false)}
-                    onFocus={() => setIsFocusedLogin(true)}
-                    style={[styles.textInput, isFocusedLogin && { borderColor: "#FF6C00" }]} 
-                    placeholder="Логін" />
-                
-                <TextInput
-                    keyboardType="email-address"
-                    onBlur={() => setIsFocusedAddres(false)}
-                    onFocus={() => setIsFocusedAddres(true)}
-                    style={[styles.textInput, isFocusedAddres && { borderColor: "#FF6C00" }]} 
-                    placeholder="Адреса електронної пошти"  />
-                <TextInput
-                    type='Пароль'
-                    onBlur={() => setIsFocusedPassword(false)}
-                    onFocus={() => setIsFocusedPassword(true)}
-                    style={[styles.textInput, isFocusedPassword && { borderColor: "#FF6C00" }]}
-                    placeholder="Пароль" />
-                <Text style={styles.showPassword}>Показати</Text>
-            </View>
-            <TouchableHighlight>
-                <View style={styles.containerButton}>
-                    <Text style={styles.ButtonText}>Зареєстуватися</Text>
-                </View>
-            </TouchableHighlight>
-            <Text style={styles.LinkTextLogin}>Вже є акаунт? Увійти</Text>
-        </View>
+    const showPassword = () => setSecureTextEntry(prevState => !prevState)
+
+    return (
+      <View style={styles.containerPostsScreen}>
+          <ImageBackground source={img} style={styles.imageBackground}>
+                <View style={styles.constainerRegistration}>
+                    <View style={styles.containerAvatar} >
+                        <Ionicons name="ios-add-circle-outline" size={25} color="#FF6C00" style={styles.iconAddAvatar } />
+                    </View>
+                        <Text style={styles.textRegistration} >Реєстрація</Text>
+                        <View style={styles.containerInput} >
+                        <TextInput
+                            onBlur={() => setIsFocusedLogin(false)}
+                            onFocus={() => setIsFocusedLogin(true)}
+                            style={[styles.textInput, isFocusedLogin && { borderColor: "#FF6C00" }]} 
+                            placeholder="Логін" />
+                        
+                        <TextInput
+                            keyboardType="email-address"
+                            onBlur={() => setIsFocusedAddres(false)}
+                            onFocus={() => setIsFocusedAddres(true)}
+                            style={[styles.textInput, isFocusedAddres && { borderColor: "#FF6C00" }]} 
+                            placeholder="Адреса електронної пошти"  />
+                        <TextInput
+                            autoComplete='off'
+                            secureTextEntry={secureTextEntry}
+                            onBlur={() => setIsFocusedPassword(false)}
+                            onFocus={() => setIsFocusedPassword(true)}
+                            style={[styles.textInput, isFocusedPassword && { borderColor: "#FF6C00" }]}
+                        placeholder="Пароль" />
+                    
+                        <TouchableOpacity style={styles.button}  onPress={showPassword}>
+                            <Text style={styles.showPassword}>Показати</Text>
+                        </TouchableOpacity> 
+                    </View>
+                    <TouchableOpacity>
+                        <View style={styles.containerButton}>
+                            <Text style={styles.ButtonText}>Зареєстуватися</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <Text style={styles.LinkTextLogin}>Вже є акаунт? Увійти</Text>
+                        </View>
+            </ ImageBackground>
+    </View>
   );
 }
 
 
 const styles = StyleSheet.create({
+     containerPostsScreen: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    imageBackground: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        resizeMode: 'cover',
+        width: "auto",
+        height: "auto",
+    },
     constainerRegistration: {
-        flex: 0.68,
+        flex: 0.7,
         backgroundColor: '#fff',
         width: "100%",
         alignItems: 'center',
@@ -68,7 +91,7 @@ const styles = StyleSheet.create({
     containerInput: {
         display: 'flex',
         gap: 16,
-        marginBottom: 44,
+        marginBottom: 30,
     },
     containerAvatar: {
         position: "absolute",
@@ -123,7 +146,7 @@ const styles = StyleSheet.create({
     },
     showPassword: {
         position: "absolute",
-        top: 146,
+        top: -50,
         left: 255,
         fontFamily: 'Roboto',
         fontStyle: "normal",
