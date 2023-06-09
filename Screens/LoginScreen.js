@@ -31,16 +31,12 @@ export function LoginScreen() {
                         style={[styles.textInput, isFocusedPassword && { borderColor: "#FF6C00" }]} 
                         placeholder="Пароль" />
               
-                  <TouchableOpacity style={styles.buttonShowPassword} onPress={showPassword}>
-                      <View style={styles.containerButtonShowPassword}>
+                  <TouchableOpacity style={styles.buttonShowPassword} onPress={showPassword}>    
                         <Text style={styles.showPassword} onPress={showPassword} >Показати</Text>
-                     </View> 
                     </TouchableOpacity>      
                 </View>
-            <TouchableOpacity>
-                <View style={styles.containerButton}>
-                    <Text style={styles.ButtonText}>Увійти</Text>
-                </View>
+            <TouchableOpacity style={styles.containerButton}>          
+                    <Text style={styles.ButtonText}>Увійти</Text>      
             </TouchableOpacity>
             <Text style={styles.LinkTextLogin}>Немає акаунту? Зареєструватися</Text>
           </View>
@@ -67,6 +63,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         width: "100%",
         alignItems: 'center',
+        borderTopLeftRadius: 25,
+        borderTopRightRadius : 25,
+        backgroundColor: '#fff',
     },
     textInput: {
         backgroundColor: "#F6F6F6",
@@ -83,7 +82,7 @@ const styles = StyleSheet.create({
     containerInput: {
         display: 'flex',
         gap: 16,
-        marginBottom: 30,
+        marginBottom: 42,
     },
     textRegistration: {
         marginTop: 32,
@@ -125,25 +124,15 @@ const styles = StyleSheet.create({
     },
     
     showPassword: {
-        // position: "absolute",
-        // top: -50,
-        // left: 255,
+        position: "absolute",
+        top: -50,
+        left: 255,
         fontFamily: 'Roboto',
         fontStyle: "normal",
         fontWeight: 400,
         fontSize: 16,
         lineHeight: 19,
-        textAlign: "center",
         color: "#1B4371",
     },
-    containerButtonShowPassword: {
-        position: "absolute",
-        top: -65,
-        left: 255,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 50,
-        width: 90,
-    }
+    
 });

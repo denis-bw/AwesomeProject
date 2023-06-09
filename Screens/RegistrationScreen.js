@@ -45,10 +45,8 @@ export function RegistrationScreen() {
                             <Text style={styles.showPassword} onPress={showPassword}>Показати</Text>
                         </TouchableOpacity> 
                     </View>
-                    <TouchableOpacity>
-                        <View style={styles.containerButton}>
+                    <TouchableOpacity style={styles.containerButton}>     
                             <Text style={styles.ButtonText}>Зареєстуватися</Text>
-                        </View>
                     </TouchableOpacity>
                     <Text style={styles.LinkTextLogin}>Вже є акаунт? Увійти</Text>
                         </View>
@@ -75,6 +73,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         width: "100%",
         alignItems: 'center',
+        borderTopLeftRadius: 25,
+        borderTopRightRadius : 25 ,
+        backgroundColor: '#fff',
     },
     textInput: {
         backgroundColor: "#F6F6F6",
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     containerInput: {
         display: 'flex',
         gap: 16,
-        marginBottom: 30,
+        marginBottom: 42,
     },
     containerAvatar: {
         position: "absolute",
